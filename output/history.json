@@ -66,5 +66,23 @@
       "ere-vol-goa-2026-02-01-goa",
       "epl-bur-wes-2026-02-07-wes"
     ]
+  },
+  {
+    "address": "0x507e52ef684ca2dd91f90a9d26d149dd3288beae",
+    "label": "GamblingIsAllYouNeed",
+    "featured_at": "2026-04-26T14:18:49.557487+00:00",
+    "run_id": "2026-04-26T14-16-48",
+    "video_id": "ny5qQ5G1XKE",
+    "positions_hash": "5e647b9fc46538e3179a29d8c8a176856ce9798d",
+    "position_slugs": [
+      "will-jd-vance-win-the-2028-us-presidential-election",
+      "will-jd-vance-win-the-2028-us-presidential-election",
+      "fl1-lor-str-2026-04-26-str",
+      "fl1-lor-str-2026-04-26-lor",
+      "bun-stu-wer-2026-04-26-stu",
+      "ucl-atm1-ars-2026-04-29-atm1",
+      "lal-ray-rso-2026-04-26-rso",
+      "bun-pau-mai-2026-05-03-pau"
+    ]
   }
 ]
