@@ -1,0 +1,91 @@
+name: WhaleBets Auto Upload
+
+on:
+  schedule:
+    # GitHub Actions cron'u UTC. TRT (UTC+3) hedefleri:
+    - cron: '0 12 * * *'   # 15:00 TRT - Asia East prime time
+    - cron: '0 15 * * *'   # 18:00 TRT - India prime + ABD sabah
+    - cron: '0 19 * * *'   # 22:00 TRT - ABD East öğle / West sabah
+    - cron: '0 23 * * *'   # 02:00 TRT (next day) - ABD East evening peak
+  workflow_dispatch:
+
+concurrency:
+  group: upload-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Restore credentials from secrets
+        run: |
+          mkdir -p credentials
+          printf '%s' '${{ secrets.YOUTUBE_TOKEN_JSON }}' > credentials/token.json
+          printf '%s' '${{ secrets.YOUTUBE_CLIENT_SECRET_JSON }}' > credentials/client_secret.json
+
+      - name: Run pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DUNE_API_KEY: ${{ secrets.DUNE_API_KEY }}
+          ANTHROPIC_MODEL: claude-sonnet-4-6
+          DATA_SOURCE: polymarket
+          POLYMARKET_WINDOW: Month
+          POLYMARKET_METRIC: profit
+          POLYMARKET_LEADERBOARD_LIMIT: '100'
+          POLYMARKET_POSITIONS_PER_USER: '8'
+          POLYMARKET_MAX_WALLETS_WITH_POSITIONS: '40'
+          MIN_ROI_PERCENT: '10.0'
+          MIN_WINRATE: '0.0'
+          MIN_TRADES: '5'
+          CONSISTENCY_WINDOW_DAYS: '90'
+          MAX_WALLETS_PER_RUN: '8'
+          TTS_PROVIDER: edge
+          EDGE_VOICE: en-US-GuyNeural
+          IMAGE_PROVIDER: none
+          YOUTUBE_CLIENT_SECRETS_FILE: credentials/client_secret.json
+          YOUTUBE_TOKEN_FILE: credentials/token.json
+          YOUTUBE_CATEGORY_ID: '28'
+          YOUTUBE_PRIVACY_STATUS: public
+          YOUTUBE_MADE_FOR_KIDS: 'false'
+          BURN_SUBTITLES: 'false'
+          CAPTION_LANGUAGES: en,es,pt,hi,id,tr,zh,ko
+          OUTPUT_DIR: ./output
+          DRY_RUN: 'false'
+          LOG_LEVEL: INFO
+          TARGET_VIDEO_SECONDS: '55'
+          HISTORY_FILE: ./output/history.json
+          WALLET_LOOKBACK_DAYS: '14'
+          POSITION_LOOKBACK_DAYS: '3'
+          INCLUDE_DISCLAIMER: 'true'
+        run: python main.py --once
+
+      - name: Commit updated history
+        if: always()
+        run: |
+          git config user.name  "WhaleBets Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add output/history.json 2>/dev/null || true
+          if ! git diff --quiet --cached; then
+            git commit -m "auto: history update [skip ci]"
+            git push
+          else
+            echo "No history changes to commit."
+          fi

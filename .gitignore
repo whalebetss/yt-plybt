@@ -1,0 +1,19 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+.env
+.DS_Store
+*.log
+
+# credentials klasörü TAMAMEN ignore — token.json ve client_secret
+# her run'da GitHub Secret'tan disk'e yazılıyor (güvenlik tarayıcısı
+# bizi commit'tirmiyor zaten, ki haklı).
+credentials/
+
+# her run'ın çıktısı (mp4, mp3, png) repo'ya gitmesin; yalnızca history.json
+output/*
+!output/history.json
