@@ -2,12 +2,24 @@ name: WhaleBets Auto Upload
 
 on:
   schedule:
-    # GitHub Actions cron'u UTC. TRT (UTC+3) hedefleri:
-    - cron: '0 12 * * *'   # 15:00 TRT - Asia East prime time
-    - cron: '0 15 * * *'   # 18:00 TRT - India prime + ABD sabah
-    - cron: '0 19 * * *'   # 22:00 TRT - ABD East öğle / West sabah
-    - cron: '0 23 * * *'   # 02:00 TRT (next day) - ABD East evening peak
+    # GitHub Actions cron'u UTC. TRT (UTC+3) hedefleri.
+    # 4 cron / gün, içerik tipi rotation:
+    #   2 trader (cüzdan portföyü)  + 2 movers (24h piyasa hareketleri)
+    - cron: '0 12 * * *'   # 15:00 TRT  trader  (Asia East prime)
+    - cron: '0 15 * * *'   # 18:00 TRT  movers  (India prime + US morning)
+    - cron: '0 19 * * *'   # 22:00 TRT  trader  (US East lunch / West morning)
+    - cron: '0 23 * * *'   # 02:00 TRT  movers  (US East evening peak)
   workflow_dispatch:
+    inputs:
+      content_type:
+        description: 'Override content type (trader / movers / default-by-cron)'
+        required: false
+        default: 'default-by-cron'
+        type: choice
+        options:
+          - default-by-cron
+          - trader
+          - movers
 
 concurrency:
   group: upload-${{ github.ref }}
@@ -40,6 +52,28 @@ jobs:
           mkdir -p credentials
           printf '%s' '${{ secrets.YOUTUBE_TOKEN_JSON }}' > credentials/token.json
           printf '%s' '${{ secrets.YOUTUBE_CLIENT_SECRET_JSON }}' > credentials/client_secret.json
+
+      - name: Resolve content type for this firing
+        id: ct
+        run: |
+          # Manual dispatch override wins; otherwise pick by cron schedule.
+          MANUAL='${{ inputs.content_type }}'
+          if [[ "$MANUAL" != "" && "$MANUAL" != "default-by-cron" ]]; then
+            echo "CONTENT_TYPE=$MANUAL" >> $GITHUB_ENV
+            echo "Resolved CONTENT_TYPE=$MANUAL (manual override)"
+          else
+            SCHED='${{ github.event.schedule }}'
+            case "$SCHED" in
+              "0 15 * * *"|"0 23 * * *")
+                echo "CONTENT_TYPE=movers" >> $GITHUB_ENV
+                echo "Resolved CONTENT_TYPE=movers (cron $SCHED)"
+                ;;
+              *)
+                echo "CONTENT_TYPE=trader" >> $GITHUB_ENV
+                echo "Resolved CONTENT_TYPE=trader (cron $SCHED)"
+                ;;
+            esac
+          fi
 
       - name: Run pipeline
         env:

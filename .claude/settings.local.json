@@ -43,7 +43,9 @@
       "PowerShell(Get-ScheduledTaskInfo -TaskName \"WhaleBets-MorningBackfill\")",
       "Bash(python check_status.py PIH-iTkbk-g zzxx1w2LBo4)",
       "Bash(python check_channel.py)",
-      "Bash(python -c \"import json; d=json.load\\(open\\(r'C:\\\\Users\\\\murat\\\\Desktop\\\\YT-PLYBT\\\\credentials\\\\client_secret.json'\\)\\); k=list\\(d.keys\\(\\)\\)[0]; print\\('project_id:', d[k].get\\('project_id'\\)\\)\")"
+      "Bash(python -c \"import json; d=json.load\\(open\\(r'C:\\\\Users\\\\murat\\\\Desktop\\\\YT-PLYBT\\\\credentials\\\\client_secret.json'\\)\\); k=list\\(d.keys\\(\\)\\)[0]; print\\('project_id:', d[k].get\\('project_id'\\)\\)\")",
+      "Bash(CONTENT_TYPE=movers DRY_RUN=true python main.py --once --dry-run)",
+      "Bash(python main.py --once --dry-run)"
     ]
   }
 }

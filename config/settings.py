@@ -26,7 +26,18 @@ class Settings(BaseSettings):
     anthropic_api_key: str = Field(default="")
     anthropic_model: str = Field(default="claude-sonnet-4-6")
 
-    # --- Data sources ---
+    # --- Content type (which kind of Short the pipeline produces) ---
+    #   "trader"  – spotlight one top trader's open positions  (existing)
+    #   "movers"  – narrate today's biggest 24h Polymarket price swings (new)
+    content_type: Literal["trader", "movers"] = Field(default="trader")
+
+    # --- Movers-mode tuning (only used when content_type == "movers") ---
+    movers_top_n: int = Field(default=5)
+    movers_scan_limit: int = Field(default=200)
+    movers_min_volume_24hr: float = Field(default=5_000.0)
+    movers_min_abs_change_pts: float = Field(default=5.0)
+
+    # --- Data sources (only used when content_type == "trader") ---
     # Which upstream feeds high-performing wallets into the pipeline.
     #   "dune"       – generic DEX traders from a saved Dune query
     #   "polymarket" – top Polymarket users + their open positions
@@ -107,6 +118,9 @@ class Settings(BaseSettings):
     @field_validator("target_video_seconds")
     @classmethod
     def _under_60(cls, v: int) -> int:
+        # Pipeline imposes its own 55s narration cap (HARD_CAP_SEC) anyway,
+        # but the script-target itself must always stay below the YouTube
+        # Shorts wall.
         if not (10 <= v < 60):
             raise ValueError("target_video_seconds must be in [10, 60)")
         return v

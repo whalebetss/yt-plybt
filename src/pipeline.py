@@ -22,6 +22,7 @@ from typing import Optional
 
 from src.utils.logger import log
 from src.utils.models import (
+    MoversStory,
     PipelineResult,
     Script,
     VideoMetadata,
@@ -32,13 +33,18 @@ from config.settings import Settings
 
 
 def run_pipeline(settings: Settings) -> Optional[PipelineResult]:
-    """Run the full pipeline. Returns None if no qualifying wallets."""
+    """Run the full pipeline. Returns None if no qualifying content."""
     _check_ffmpeg(settings)
 
     run_id = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
     run_dir = settings.output_dir / run_id
     run_dir.mkdir(parents=True, exist_ok=True)
-    log.info("Run directory: {}", run_dir)
+    log.info("Run directory: {} (content_type={})", run_dir, settings.content_type)
+
+    # Branch: "movers" content type uses a parallel flow with no wallet,
+    # narrating today's biggest 24h Polymarket price swings instead.
+    if settings.content_type == "movers":
+        return _run_movers_pipeline(settings, run_id, run_dir)
 
     wallets = _fetch_wallets(settings)
     if not wallets:
@@ -515,3 +521,167 @@ def _upload(
         )
 
     return video_id
+
+
+# ===========================================================================
+# Movers content type — parallel pipeline that narrates the top 24h Polymarket
+# price swings instead of a single trader's portfolio.
+# ===========================================================================
+def _run_movers_pipeline(
+    settings: Settings,
+    run_id: str,
+    run_dir: Path,
+) -> Optional[PipelineResult]:
+    from src.data_collection.polymarket_movers_client import PolymarketMoversClient
+    from src.content.movers_script_generator import MoversScriptGenerator
+    from src.content.scene_builder import SceneBuilder
+    from src.youtube.movers_metadata_generator import MoversMetadataGenerator
+
+    log.info("=== STAGE: Polymarket Movers Fetch ===")
+    movers_client = PolymarketMoversClient(
+        top_n=settings.movers_top_n,
+        scan_limit=settings.movers_scan_limit,
+        min_volume_24hr=settings.movers_min_volume_24hr,
+        min_abs_change_pts=settings.movers_min_abs_change_pts,
+    )
+    story = movers_client.fetch()
+    if not story.movers:
+        log.warning("No qualifying movers — aborting movers pipeline.")
+        return None
+
+    dump_json(
+        {
+            "movers": [_mover_to_dict(m) for m in story.movers],
+            "window_hours": story.window_hours,
+            "fetched_at": story.fetched_at.isoformat() if story.fetched_at else None,
+        },
+        run_dir / "movers.json",
+    )
+
+    # Dedup: skip if the SAME exact set of slugs was used in the last 24h.
+    # (Different swing sets every cron is the normal case — this is just a
+    # safety net for the unlikely "leaderboard didn't change at all" run.)
+    history = _open_history(settings)
+    if _movers_set_recent(history, story):
+        log.warning(
+            "This exact movers set was published within the last 24h "
+            "({} markets) — skipping run.",
+            len(story.movers),
+        )
+        return None
+
+    log.info("=== STAGE: Movers Script Generation ===")
+    script_gen = MoversScriptGenerator(
+        api_key=settings.anthropic_api_key,
+        model=settings.anthropic_model,
+    )
+    script = script_gen.generate(story, settings.target_video_seconds)
+    dump_json(asdict(script), run_dir / "script.json")
+
+    scenes = SceneBuilder().build(script, settings.target_video_seconds, run_dir)
+    dump_json([asdict(s) for s in scenes], run_dir / "scenes.json")
+
+    # Movers content has no "wallet" — pass None and let the placeholder image
+    # generator fall back to a generic Polymarket-themed visual.
+    _generate_images(scenes, settings, wallet=None, run_dir=run_dir)
+    _generate_narration(scenes, settings, run_dir)
+
+    video_path = _assemble_video(scenes, settings, run_dir)
+
+    metadata_gen = MoversMetadataGenerator(
+        api_key=settings.anthropic_api_key,
+        model=settings.anthropic_model,
+    )
+    metadata = metadata_gen.generate(story, script)
+    dump_json(asdict(metadata), run_dir / "metadata.json")
+
+    caption_paths = _translate_captions(run_dir, settings)
+
+    youtube_video_id = None
+    if not settings.dry_run:
+        youtube_video_id = _upload(
+            video_path, metadata, settings, run_dir,
+            caption_paths=caption_paths,
+        )
+    else:
+        log.info("DRY_RUN enabled - skipping YouTube upload.")
+
+    _record_movers(history, story, run_id, youtube_video_id)
+
+    # PipelineResult expects a wallet — synthesize a thin one so existing
+    # callers (main.py logging) don't crash.
+    synthetic_wallet = WalletProfile(
+        address="0x" + "0" * 40,
+        chain="polygon",
+        label=f"movers-{run_id}",
+        sources=["polymarket_movers"],
+    )
+    return PipelineResult(
+        run_dir=run_dir,
+        wallet=synthetic_wallet,
+        script=script,
+        video_path=video_path,
+        metadata=metadata,
+        youtube_video_id=youtube_video_id,
+    )
+
+
+def _mover_to_dict(m) -> dict:
+    return {
+        "slug": m.slug,
+        "question": m.question,
+        "current_price": m.current_price,
+        "previous_price": m.previous_price,
+        "change_pts": m.change_pts,
+        "volume_24hr": m.volume_24hr,
+        "end_date": m.end_date,
+        "category": m.category,
+    }
+
+
+def _movers_set_recent(history, story: MoversStory) -> bool:
+    """True if the SAME slug-set was published within the last 24h."""
+    from datetime import timedelta, timezone as _tz, datetime as _dt
+    cutoff = _dt.now(_tz.utc) - timedelta(hours=24)
+    target_key = story.slugs_hash_key
+    for entry in getattr(history, "_entries", []):
+        if (
+            getattr(entry, "address", "").startswith("movers:")
+            and entry.featured_at >= cutoff
+            and getattr(entry, "positions_hash", "") == target_key
+        ):
+            log.info(
+                "Movers set already published at {} (slugs_key={})",
+                entry.featured_at.isoformat(), target_key[:60],
+            )
+            return True
+    return False
+
+
+def _record_movers(
+    history,
+    story: MoversStory,
+    run_id: str,
+    video_id: Optional[str],
+) -> None:
+    """Append a synthetic 'movers' entry into history.json so the same slug
+    set is dedup'd within 24h. Reuses the existing entry schema."""
+    from src.utils.history import HistoryEntry
+    from datetime import datetime as _dt, timezone as _tz
+
+    synthetic_addr = "movers:" + run_id  # unique per-run, can't collide with wallets
+    entry = HistoryEntry(
+        address=synthetic_addr,
+        label="polymarket_movers",
+        featured_at=_dt.now(_tz.utc),
+        run_id=run_id,
+        video_id=video_id,
+        positions_hash=story.slugs_hash_key,
+        position_slugs=[m.slug for m in story.movers],
+    )
+    history._entries.append(entry)
+    history._save()
+    log.info(
+        "Recorded movers run in history (slugs={}, total entries: {})",
+        len(story.movers), len(history._entries),
+    )

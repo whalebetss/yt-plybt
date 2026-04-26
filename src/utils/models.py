@@ -61,6 +61,55 @@ class WalletProfile:
 
 
 @dataclass
+class MarketMover:
+    """A single Polymarket market with notable 24-hour price movement.
+
+    `current_price` and `previous_price` are 0.00–1.00 implied probabilities
+    (YES side, since that's the convention in Polymarket UI).
+    `change_pts` = (current - previous) * 100 — positive means rallied YES.
+    """
+
+    slug: str
+    question: str
+    current_price: float
+    previous_price: float
+    volume_24hr: float = 0.0
+    end_date: Optional[str] = None
+    category: Optional[str] = None
+    raw: dict = field(default_factory=dict)
+
+    @property
+    def change_pts(self) -> float:
+        return (self.current_price - self.previous_price) * 100.0
+
+    @property
+    def implied_pct(self) -> int:
+        return int(round(self.current_price * 100))
+
+    @property
+    def previous_pct(self) -> int:
+        return int(round(self.previous_price * 100))
+
+    @property
+    def direction(self) -> str:
+        return "rallied" if self.change_pts > 0 else "crashed"
+
+
+@dataclass
+class MoversStory:
+    """A bundle of top market movers used as a single Short's content."""
+
+    movers: List[MarketMover] = field(default_factory=list)
+    window_hours: int = 24
+    fetched_at: Optional[datetime] = None
+
+    @property
+    def slugs_hash_key(self) -> str:
+        """Stable signature of this story's market set, for dedup."""
+        return ",".join(sorted(m.slug for m in self.movers))
+
+
+@dataclass
 class Scene:
     index: int
     duration_sec: float
