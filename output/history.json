@@ -52,5 +52,19 @@
       "wta-mertens-pliskov-2026-04-26",
       "sea-fio-sas-2026-04-26-total-1pt5"
     ]
+  },
+  {
+    "address": "0x94f199fb7789f1aef7fff6b758d6b375100f4c7a",
+    "label": "KeyTransporter",
+    "featured_at": "2026-04-26T14:10:44.302053+00:00",
+    "run_id": "2026-04-26T14-08-30",
+    "video_id": "PW7UAMtiMhk",
+    "positions_hash": "5f4d40c55a79162cdf6050609a9830d89e1da812",
+    "position_slugs": [
+      "uel-lil-crv1-2026-02-19-lil",
+      "lal-mad-bet-2026-02-08-mad",
+      "ere-vol-goa-2026-02-01-goa",
+      "epl-bur-wes-2026-02-07-wes"
+    ]
   }
 ]
