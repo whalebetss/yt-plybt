@@ -279,11 +279,11 @@ def _generate_narration(scenes, settings: Settings, run_dir: Path):
             scene.duration_sec = measured
 
     # YouTube Shorts hard limit is 60s; anything longer falls out of the
-    # Shorts shelf into the regular feed (≪ reach). If the sum of measured
-    # narration exceeds our 58s safety cap, speed up every clip uniformly
-    # via ffmpeg atempo so the pacing stays natural and captions still align.
-    HARD_CAP_SEC = 58.0
+    # Shorts shelf into the regular feed (≪ reach). 55s gives a 5s buffer
+    # since ffmpeg muxing rounding tends to add ~0.5–1s.
+    HARD_CAP_SEC = 55.0
     total = sum(s.duration_sec for s in scenes)
+    log.info("Total measured narration: {:.2f}s (cap={}s)", total, HARD_CAP_SEC)
     if total > HARD_CAP_SEC:
         import shutil
         import subprocess
@@ -398,6 +398,50 @@ def _assemble_video(scenes, settings: Settings, run_dir: Path) -> Path:
         subtitle_path=subtitle_path if (burn and subtitle_path.exists()) else None,
         vertical=True
     )
+
+    # Final safety net: if the rendered file STILL exceeds the Shorts cap
+    # (e.g. ffmpeg muxing rounding pushed us over after the per-scene
+    # atempo), re-encode the whole video — both stream and audio — with a
+    # uniform setpts/atempo so we land cleanly under 60s. Belt-and-suspenders.
+    SHORTS_CAP_SEC = 58.0
+    final_dur = _ffprobe_duration(output_path) or 0.0
+    log.info("Rendered video duration: {:.2f}s (Shorts cap {}s)", final_dur, SHORTS_CAP_SEC)
+    if final_dur > SHORTS_CAP_SEC:
+        import shutil
+        import subprocess
+        ratio = final_dur / SHORTS_CAP_SEC
+        log.warning(
+            "Final video {:.2f}s > {}s — re-encoding at {:.3f}x to fit Shorts.",
+            final_dur, SHORTS_CAP_SEC, ratio,
+        )
+        if shutil.which("ffmpeg"):
+            sped_path = output_path.with_suffix(".sped.mp4")
+            # setpts on video stream, atempo on audio stream (chained if >2x).
+            if ratio <= 2.0:
+                af = f"atempo={ratio:.4f}"
+            else:
+                half = ratio ** 0.5
+                af = f"atempo={half:.4f},atempo={half:.4f}"
+            r = subprocess.run(
+                [
+                    "ffmpeg", "-y", "-i", str(output_path),
+                    "-filter_complex",
+                    f"[0:v]setpts=PTS/{ratio:.6f}[v];[0:a]{af}[a]",
+                    "-map", "[v]", "-map", "[a]",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "23",
+                    "-c:a", "aac", "-b:a", "192k",
+                    "-movflags", "+faststart",
+                    str(sped_path),
+                ],
+                capture_output=True, text=True,
+            )
+            if r.returncode == 0 and sped_path.exists():
+                sped_path.replace(output_path)
+                new_dur = _ffprobe_duration(output_path) or 0.0
+                log.info("Post-fix duration: {:.2f}s", new_dur)
+            else:
+                log.error("Final re-encode failed:\n{}", r.stderr[-600:])
+
     return output_path
 
 
