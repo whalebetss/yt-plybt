@@ -70,7 +70,7 @@ jobs:
           OUTPUT_DIR: ./output
           DRY_RUN: 'false'
           LOG_LEVEL: INFO
-          TARGET_VIDEO_SECONDS: '55'
+          TARGET_VIDEO_SECONDS: '40'
           HISTORY_FILE: ./output/history.json
           WALLET_LOOKBACK_DAYS: '14'
           POSITION_LOOKBACK_DAYS: '3'

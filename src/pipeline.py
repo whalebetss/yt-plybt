@@ -278,6 +278,47 @@ def _generate_narration(scenes, settings: Settings, run_dir: Path):
             )
             scene.duration_sec = measured
 
+    # YouTube Shorts hard limit is 60s; anything longer falls out of the
+    # Shorts shelf into the regular feed (≪ reach). If the sum of measured
+    # narration exceeds our 58s safety cap, speed up every clip uniformly
+    # via ffmpeg atempo so the pacing stays natural and captions still align.
+    HARD_CAP_SEC = 58.0
+    total = sum(s.duration_sec for s in scenes)
+    if total > HARD_CAP_SEC:
+        import shutil
+        import subprocess
+        speedup = total / HARD_CAP_SEC
+        log.warning(
+            "Total narration {:.1f}s exceeds {:.1f}s cap — applying atempo={:.3f}x to fit Shorts.",
+            total, HARD_CAP_SEC, speedup,
+        )
+        if speedup > 2.0:
+            log.warning("Speedup {:.2f}x > 2.0 — atempo chained to stay in valid range.", speedup)
+        if shutil.which("ffmpeg"):
+            for i, scene in enumerate(scenes):
+                audio_path = run_dir / f"narration_{i:02d}.mp3"
+                sped = audio_path.with_suffix(".sped.mp3")
+                # atempo accepts 0.5–2.0 per filter; chain twice for >2x.
+                if speedup <= 2.0:
+                    afilter = f"atempo={speedup:.4f}"
+                else:
+                    half = speedup ** 0.5
+                    afilter = f"atempo={half:.4f},atempo={half:.4f}"
+                r = subprocess.run(
+                    [
+                        "ffmpeg", "-y", "-i", str(audio_path),
+                        "-filter:a", afilter,
+                        "-c:a", "libmp3lame", "-b:a", "192k",
+                        str(sped),
+                    ],
+                    capture_output=True, text=True,
+                )
+                if r.returncode == 0 and sped.exists():
+                    sped.replace(audio_path)
+                    scene.duration_sec = scene.duration_sec / speedup
+                else:
+                    log.warning("atempo failed on scene {}: {}", i, r.stderr[-300:])
+
     sub_gen = SubtitleGenerator()
     sub_path = run_dir / "subtitles.srt"
     sub_gen.from_scenes(scenes, sub_path)
