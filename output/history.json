@@ -117,5 +117,20 @@
       "cbb-ark-fl-2026-02-28-spread-home-9pt5",
       "cs2-hero-nrg-2026-03-01"
     ]
+  },
+  {
+    "address": "movers:2026-04-27T19-56-42",
+    "label": "polymarket_movers",
+    "featured_at": "2026-04-27T19:57:55.756406+00:00",
+    "run_id": "2026-04-27T19-56-42",
+    "video_id": "ZgewTt6CRkU",
+    "positions_hash": "israel-x-hezbollah-ceasefire-extended-by-april-26-2026,sea-cag-ata-2026-04-27-cag,spx-opens-up-or-down-on-april-27-2026,tur-bes-kar-2026-04-27-bes,wta-bencic-baptist-2026-04-27",
+    "position_slugs": [
+      "sea-cag-ata-2026-04-27-cag",
+      "israel-x-hezbollah-ceasefire-extended-by-april-26-2026",
+      "tur-bes-kar-2026-04-27-bes",
+      "wta-bencic-baptist-2026-04-27",
+      "spx-opens-up-or-down-on-april-27-2026"
+    ]
   }
 ]
