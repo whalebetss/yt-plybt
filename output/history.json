@@ -119,7 +119,7 @@
     ]
   },
   {
-    "address": "movers:2026-04-27T19-56-42",
+    "address": "movers:2026-04-27t19-56-42",
     "label": "polymarket_movers",
     "featured_at": "2026-04-27T19:57:55.756406+00:00",
     "run_id": "2026-04-27T19-56-42",
@@ -131,6 +131,22 @@
       "tur-bes-kar-2026-04-27-bes",
       "wta-bencic-baptist-2026-04-27",
       "spx-opens-up-or-down-on-april-27-2026"
+    ]
+  },
+  {
+    "address": "0x006cc834cc092684f1b56626e23bedb3835c16ea",
+    "label": "0x006cc834Cc092684F1B56626E23BEdB3835c16ea-1729683673397",
+    "featured_at": "2026-04-27T22:10:51.736761+00:00",
+    "run_id": "2026-04-27T22-08-49",
+    "video_id": "5PHdheuecGo",
+    "positions_hash": "88e888528c5f953c9f60d1a49c2055e7f4a135a5",
+    "position_slugs": [
+      "will-jesus-christ-return-before-2027",
+      "will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
+      "will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
+      "will-daniel-ennis-win-the-2026-dublin-central-by-election",
+      "will-janice-boylan-win-the-2026-dublin-central-by-election",
+      "will-janet-horner-win-the-2026-dublin-central-by-election"
     ]
   }
 ]
