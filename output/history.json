@@ -86,7 +86,7 @@
     ]
   },
   {
-    "address": "movers:2026-04-27T07-55-23",
+    "address": "movers:2026-04-27t07-55-23",
     "label": "polymarket_movers",
     "featured_at": "2026-04-27T07:56:36.509894+00:00",
     "run_id": "2026-04-27T07-55-23",
@@ -98,6 +98,24 @@
       "lol-bro1-hle-2026-04-27-game1",
       "lol-bro1-hle-2026-04-27-game2",
       "lol-dkc-nsea-2026-04-27-game1"
+    ]
+  },
+  {
+    "address": "0xe90bec87d9ef430f27f9dcfe72c34b76967d5da2",
+    "label": "gmanas",
+    "featured_at": "2026-04-27T17:14:52.707280+00:00",
+    "run_id": "2026-04-27T17-12-31",
+    "video_id": "BxoLbGS_DxY",
+    "positions_hash": "ff08ef4a83a858728ea741b3a1c7bf5dd7ecdef0",
+    "position_slugs": [
+      "ucl-atm1-bru-2026-02-24-draw",
+      "us-strike-on-mexico-by-march-31",
+      "nhl-van-wpg-2026-03-07",
+      "cbb-unlv-utahst-2026-01-08",
+      "lol-ns-dnf-2026-02-07-game2",
+      "cbb-butl-vill-2026-02-25-spread-home-10pt5",
+      "cbb-ark-fl-2026-02-28-spread-home-9pt5",
+      "cs2-hero-nrg-2026-03-01"
     ]
   }
 ]
