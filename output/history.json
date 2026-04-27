@@ -84,5 +84,20 @@
       "lal-ray-rso-2026-04-26-rso",
       "bun-pau-mai-2026-05-03-pau"
     ]
+  },
+  {
+    "address": "movers:2026-04-27T07-55-23",
+    "label": "polymarket_movers",
+    "featured_at": "2026-04-27T07:56:36.509894+00:00",
+    "run_id": "2026-04-27T07-55-23",
+    "video_id": "2A9oSMfH8Z8",
+    "positions_hash": "lol-bro1-hle-2026-04-27,lol-bro1-hle-2026-04-27-game1,lol-bro1-hle-2026-04-27-game2,lol-dkc-nsea-2026-04-27-game1,will-trump-talk-to-ursula-von-der-leyen-in-april",
+    "position_slugs": [
+      "lol-bro1-hle-2026-04-27",
+      "will-trump-talk-to-ursula-von-der-leyen-in-april",
+      "lol-bro1-hle-2026-04-27-game1",
+      "lol-bro1-hle-2026-04-27-game2",
+      "lol-dkc-nsea-2026-04-27-game1"
+    ]
   }
 ]
