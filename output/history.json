@@ -181,5 +181,20 @@
       "nba-cle-bkn-2026-03-01-total-215pt5",
       "nba-bkn-den-2026-01-29"
     ]
+  },
+  {
+    "address": "movers:2026-04-28T20-06-16",
+    "label": "polymarket_movers",
+    "featured_at": "2026-04-28T20:07:40.675692+00:00",
+    "run_id": "2026-04-28T20-06-16",
+    "video_id": "o5nqPLHGAsU",
+    "positions_hash": "highest-temperature-in-hong-kong-on-april-28-2026-29c,lol-fnc-shft-2026-04-28-game2,lol-vit-sly-2026-04-28-game2,ucl-psg1-bay1-2026-04-28-total-4pt5,wta-bolsova-stearns-2026-04-28",
+    "position_slugs": [
+      "highest-temperature-in-hong-kong-on-april-28-2026-29c",
+      "wta-bolsova-stearns-2026-04-28",
+      "ucl-psg1-bay1-2026-04-28-total-4pt5",
+      "lol-vit-sly-2026-04-28-game2",
+      "lol-fnc-shft-2026-04-28-game2"
+    ]
   }
 ]
