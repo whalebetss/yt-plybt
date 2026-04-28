@@ -150,7 +150,7 @@
     ]
   },
   {
-    "address": "movers:2026-04-28T07-45-50",
+    "address": "movers:2026-04-28t07-45-50",
     "label": "polymarket_movers",
     "featured_at": "2026-04-28T07:47:03.567727+00:00",
     "run_id": "2026-04-28T07-45-50",
@@ -162,6 +162,24 @@
       "will-anthropic-have-the-best-math-ai-model-at-the-end-of-april-2026",
       "elon-musk-of-tweets-april-21-april-28-220-239",
       "atp-tsitsip-aguilar-2026-04-27"
+    ]
+  },
+  {
+    "address": "0xdc876e6873772d38716fda7f2452a78d426d7ab6",
+    "label": "432614799197",
+    "featured_at": "2026-04-28T18:01:08.380464+00:00",
+    "run_id": "2026-04-28T17-59-17",
+    "video_id": "7SXNaZIlGk0",
+    "positions_hash": "5fb530fca9f2703adac590435b00c01a350dc12c",
+    "position_slugs": [
+      "nba-sac-uta-2026-02-11-total-231pt5",
+      "nhl-det-ott-2026-02-26",
+      "lal-gir-osa-2026-01-10-osa",
+      "nba-okc-mem-2026-01-09-total-229pt5",
+      "nba-bos-cle-2026-03-08-total-225pt5",
+      "sea-ver-nap-2026-02-28-total-2pt5",
+      "nba-cle-bkn-2026-03-01-total-215pt5",
+      "nba-bkn-den-2026-01-29"
     ]
   }
 ]
