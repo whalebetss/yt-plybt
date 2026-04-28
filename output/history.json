@@ -148,5 +148,20 @@
       "will-janice-boylan-win-the-2026-dublin-central-by-election",
       "will-janet-horner-win-the-2026-dublin-central-by-election"
     ]
+  },
+  {
+    "address": "movers:2026-04-28T07-45-50",
+    "label": "polymarket_movers",
+    "featured_at": "2026-04-28T07:47:03.567727+00:00",
+    "run_id": "2026-04-28T07-45-50",
+    "video_id": "oVP2LOBR60M",
+    "positions_hash": "atp-tsitsip-aguilar-2026-04-27,elon-musk-of-tweets-april-21-april-28-220-239,israel-x-hezbollah-ceasefire-extended-by-april-26-2026,will-anthropic-have-the-best-math-ai-model-at-the-end-of-april-2026,wta-saito-yao-2026-04-27",
+    "position_slugs": [
+      "wta-saito-yao-2026-04-27",
+      "israel-x-hezbollah-ceasefire-extended-by-april-26-2026",
+      "will-anthropic-have-the-best-math-ai-model-at-the-end-of-april-2026",
+      "elon-musk-of-tweets-april-21-april-28-220-239",
+      "atp-tsitsip-aguilar-2026-04-27"
+    ]
   }
 ]
