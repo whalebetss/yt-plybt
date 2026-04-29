@@ -198,7 +198,7 @@
     ]
   },
   {
-    "address": "movers:2026-04-29T07-37-38",
+    "address": "movers:2026-04-29t07-37-38",
     "label": "polymarket_movers",
     "featured_at": "2026-04-29T07:39:15.540907+00:00",
     "run_id": "2026-04-29T07-37-38",
@@ -210,6 +210,21 @@
       "elon-musk-of-tweets-april-2026-1040-1079",
       "elon-musk-of-tweets-april-24-may-1-180-199",
       "will-bitcoin-dip-to-75000-in-april"
+    ]
+  },
+  {
+    "address": "movers:2026-04-29T20-04-19",
+    "label": "polymarket_movers",
+    "featured_at": "2026-04-29T20:05:34.933185+00:00",
+    "run_id": "2026-04-29T20-04-19",
+    "video_id": "LqM36OVWMRk",
+    "positions_hash": "atp-dedurap-donald-2026-04-29,cs2-vit-fut-2026-04-29-game2,cs2-vit-fut-2026-04-29-map-handicap-away-1pt5,will-trump-talk-to-vladimir-putin-in-april,wta-maia-krueger-2026-04-29",
+    "position_slugs": [
+      "will-trump-talk-to-vladimir-putin-in-april",
+      "cs2-vit-fut-2026-04-29-game2",
+      "atp-dedurap-donald-2026-04-29",
+      "wta-maia-krueger-2026-04-29",
+      "cs2-vit-fut-2026-04-29-map-handicap-away-1pt5"
     ]
   }
 ]
