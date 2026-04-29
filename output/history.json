@@ -183,7 +183,7 @@
     ]
   },
   {
-    "address": "movers:2026-04-28T20-06-16",
+    "address": "movers:2026-04-28t20-06-16",
     "label": "polymarket_movers",
     "featured_at": "2026-04-28T20:07:40.675692+00:00",
     "run_id": "2026-04-28T20-06-16",
@@ -195,6 +195,21 @@
       "ucl-psg1-bay1-2026-04-28-total-4pt5",
       "lol-vit-sly-2026-04-28-game2",
       "lol-fnc-shft-2026-04-28-game2"
+    ]
+  },
+  {
+    "address": "movers:2026-04-29T07-37-38",
+    "label": "polymarket_movers",
+    "featured_at": "2026-04-29T07:39:15.540907+00:00",
+    "run_id": "2026-04-29T07-37-38",
+    "video_id": "76WDEPj4F1M",
+    "positions_hash": "elon-musk-of-tweets-april-2026-1040-1079,elon-musk-of-tweets-april-24-may-1-180-199,elon-musk-of-tweets-april-27-april-29-40-64,j1100-vis-cer-2026-04-29-vis,will-bitcoin-dip-to-75000-in-april",
+    "position_slugs": [
+      "elon-musk-of-tweets-april-27-april-29-40-64",
+      "j1100-vis-cer-2026-04-29-vis",
+      "elon-musk-of-tweets-april-2026-1040-1079",
+      "elon-musk-of-tweets-april-24-may-1-180-199",
+      "will-bitcoin-dip-to-75000-in-april"
     ]
   }
 ]
