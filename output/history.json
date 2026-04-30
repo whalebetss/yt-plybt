@@ -213,7 +213,7 @@
     ]
   },
   {
-    "address": "movers:2026-04-29T20-04-19",
+    "address": "movers:2026-04-29t20-04-19",
     "label": "polymarket_movers",
     "featured_at": "2026-04-29T20:05:34.933185+00:00",
     "run_id": "2026-04-29T20-04-19",
@@ -225,6 +225,21 @@
       "atp-dedurap-donald-2026-04-29",
       "wta-maia-krueger-2026-04-29",
       "cs2-vit-fut-2026-04-29-map-handicap-away-1pt5"
+    ]
+  },
+  {
+    "address": "movers:2026-04-30T07-41-43",
+    "label": "polymarket_movers",
+    "featured_at": "2026-04-30T07:42:58.798277+00:00",
+    "run_id": "2026-04-30T07-41-43",
+    "video_id": "lxoZF8dcjhM",
+    "positions_hash": "over-10m-committed-to-the-printr-public-sale,over-3m-committed-to-the-printr-public-sale,over-4m-committed-to-the-printr-public-sale,over-6m-committed-to-the-printr-public-sale,over-8m-committed-to-the-printr-public-sale",
+    "position_slugs": [
+      "over-4m-committed-to-the-printr-public-sale",
+      "over-3m-committed-to-the-printr-public-sale",
+      "over-6m-committed-to-the-printr-public-sale",
+      "over-8m-committed-to-the-printr-public-sale",
+      "over-10m-committed-to-the-printr-public-sale"
     ]
   }
 ]
