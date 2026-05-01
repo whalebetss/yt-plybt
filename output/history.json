@@ -228,7 +228,7 @@
     ]
   },
   {
-    "address": "movers:2026-04-30T07-41-43",
+    "address": "movers:2026-04-30t07-41-43",
     "label": "polymarket_movers",
     "featured_at": "2026-04-30T07:42:58.798277+00:00",
     "run_id": "2026-04-30T07-41-43",
@@ -240,6 +240,21 @@
       "over-6m-committed-to-the-printr-public-sale",
       "over-8m-committed-to-the-printr-public-sale",
       "over-10m-committed-to-the-printr-public-sale"
+    ]
+  },
+  {
+    "address": "movers:2026-05-01T07-40-21",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-01T07:41:37.951905+00:00",
+    "run_id": "2026-05-01T07-40-21",
+    "video_id": "CuyPmheVOVQ",
+    "positions_hash": "elon-musk-of-tweets-april-24-may-1-180-199,lol-hle-foxy-2026-05-01-game2,lol-t1a-drxc-2026-05-01,lol-t1a-drxc-2026-05-01-game1,lol-t1a-drxc-2026-05-01-game2",
+    "position_slugs": [
+      "lol-t1a-drxc-2026-05-01",
+      "lol-t1a-drxc-2026-05-01-game1",
+      "lol-t1a-drxc-2026-05-01-game2",
+      "lol-hle-foxy-2026-05-01-game2",
+      "elon-musk-of-tweets-april-24-may-1-180-199"
     ]
   }
 ]
