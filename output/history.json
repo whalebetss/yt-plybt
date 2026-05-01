@@ -243,7 +243,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-01T07-40-21",
+    "address": "movers:2026-05-01t07-40-21",
     "label": "polymarket_movers",
     "featured_at": "2026-05-01T07:41:37.951905+00:00",
     "run_id": "2026-05-01T07-40-21",
@@ -255,6 +255,21 @@
       "lol-t1a-drxc-2026-05-01-game2",
       "lol-hle-foxy-2026-05-01-game2",
       "elon-musk-of-tweets-april-24-may-1-180-199"
+    ]
+  },
+  {
+    "address": "movers:2026-05-01T18-17-07",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-01T18:18:23.663712+00:00",
+    "run_id": "2026-05-01T18-17-07",
+    "video_id": "KHWlfpPAaLs",
+    "positions_hash": "atp-cadenas-jong-2026-05-01,lol-sc-jl-2026-05-01,qatarenergy-announcesresumes-lng-production-in-qatar-by-april-30,will-a-new-mai-model-be-released-by-april-30-2026,will-a-us-anti-cartel-operation-outside-of-the-united-states-occur-by-april-30-2026-822-284-191",
+    "position_slugs": [
+      "qatarenergy-announcesresumes-lng-production-in-qatar-by-april-30",
+      "will-a-us-anti-cartel-operation-outside-of-the-united-states-occur-by-april-30-2026-822-284-191",
+      "will-a-new-mai-model-be-released-by-april-30-2026",
+      "lol-sc-jl-2026-05-01",
+      "atp-cadenas-jong-2026-05-01"
     ]
   }
 ]
