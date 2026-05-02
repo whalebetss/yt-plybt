@@ -273,7 +273,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-02T06-25-13",
+    "address": "movers:2026-05-02t06-25-13",
     "label": "polymarket_movers",
     "featured_at": "2026-05-02T06:26:29.810215+00:00",
     "run_id": "2026-05-02T06-25-13",
@@ -285,6 +285,21 @@
       "will-a-us-anti-cartel-operation-outside-of-the-united-states-occur-by-april-30-2026-822-284-191",
       "spirit-airlines-shutdownliquidation-by-may-31",
       "bitcoin-above-78k-on-may-2"
+    ]
+  },
+  {
+    "address": "movers:2026-05-02T17-33-50",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-02T17:35:00.912826+00:00",
+    "run_id": "2026-05-02T17-33-50",
+    "video_id": "Q71S8jjQP9w",
+    "positions_hash": "bun-bay-hei-2026-05-02-bay,bun-bay-hei-2026-05-02-draw,bun-wer-aug-2026-05-02-aug,elc-swe-wba-2026-05-02-swe,lal-val-mad-2026-05-02-mad",
+    "position_slugs": [
+      "bun-bay-hei-2026-05-02-draw",
+      "elc-swe-wba-2026-05-02-swe",
+      "lal-val-mad-2026-05-02-mad",
+      "bun-bay-hei-2026-05-02-bay",
+      "bun-wer-aug-2026-05-02-aug"
     ]
   }
 ]
