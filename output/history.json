@@ -258,7 +258,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-01T18-17-07",
+    "address": "movers:2026-05-01t18-17-07",
     "label": "polymarket_movers",
     "featured_at": "2026-05-01T18:18:23.663712+00:00",
     "run_id": "2026-05-01T18-17-07",
@@ -270,6 +270,21 @@
       "will-a-new-mai-model-be-released-by-april-30-2026",
       "lol-sc-jl-2026-05-01",
       "atp-cadenas-jong-2026-05-01"
+    ]
+  },
+  {
+    "address": "movers:2026-05-02T06-25-13",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-02T06:26:29.810215+00:00",
+    "run_id": "2026-05-02T06-25-13",
+    "video_id": "vdxyboIf-ws",
+    "positions_hash": "bitcoin-above-78k-on-may-2,qatarenergy-announcesresumes-lng-production-in-qatar-by-april-30,spirit-airlines-shutdownliquidation-by-may-31,will-a-new-mai-model-be-released-by-april-30-2026,will-a-us-anti-cartel-operation-outside-of-the-united-states-occur-by-april-30-2026-822-284-191",
+    "position_slugs": [
+      "will-a-new-mai-model-be-released-by-april-30-2026",
+      "qatarenergy-announcesresumes-lng-production-in-qatar-by-april-30",
+      "will-a-us-anti-cartel-operation-outside-of-the-united-states-occur-by-april-30-2026-822-284-191",
+      "spirit-airlines-shutdownliquidation-by-may-31",
+      "bitcoin-above-78k-on-may-2"
     ]
   }
 ]
