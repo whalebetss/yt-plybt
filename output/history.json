@@ -288,7 +288,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-02T17-33-50",
+    "address": "movers:2026-05-02t17-33-50",
     "label": "polymarket_movers",
     "featured_at": "2026-05-02T17:35:00.912826+00:00",
     "run_id": "2026-05-02T17-33-50",
@@ -300,6 +300,21 @@
       "lal-val-mad-2026-05-02-mad",
       "bun-bay-hei-2026-05-02-bay",
       "bun-wer-aug-2026-05-02-aug"
+    ]
+  },
+  {
+    "address": "movers:2026-05-03T07-27-27",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-03T07:28:45.953626+00:00",
+    "run_id": "2026-05-03T07-27-27",
+    "video_id": "lb_IxMsE2Yg",
+    "positions_hash": "dota2-yes-sar1-2026-05-02,dota2-yes-sar1-2026-05-02-game2,highest-temperature-in-hong-kong-on-may-2-2026-26c,nba-phi-bos-2026-05-02,ruben-rocha-out-as-governor-of-sinaloa-by-may-31",
+    "position_slugs": [
+      "ruben-rocha-out-as-governor-of-sinaloa-by-may-31",
+      "dota2-yes-sar1-2026-05-02",
+      "nba-phi-bos-2026-05-02",
+      "dota2-yes-sar1-2026-05-02-game2",
+      "highest-temperature-in-hong-kong-on-may-2-2026-26c"
     ]
   }
 ]
