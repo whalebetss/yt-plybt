@@ -318,7 +318,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-03T17-36-15",
+    "address": "movers:2026-05-03t17-36-15",
     "label": "polymarket_movers",
     "featured_at": "2026-05-03T17:37:29.091001+00:00",
     "run_id": "2026-05-03T17-36-15",
@@ -330,6 +330,21 @@
       "epl-mun-liv-2026-05-03-total-4pt5",
       "ruben-rocha-out-as-governor-of-sinaloa-by-may-31",
       "fl1-lil-hac-2026-05-03-lil"
+    ]
+  },
+  {
+    "address": "movers:2026-05-04T08-09-50",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-04T08:11:09.484250+00:00",
+    "run_id": "2026-05-04T08-09-50",
+    "video_id": "JiXkAecqZ6Q",
+    "positions_hash": "highest-temperature-in-taipei-on-may-4-2026-24c,lol-dkc-dnsc-2026-05-04,lol-dkc-dnsc-2026-05-04-game2,will-tamilaga-vettri-kazhagam-tvk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election,will-the-dravida-munnetra-kazhagam-dmk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election",
+    "position_slugs": [
+      "will-tamilaga-vettri-kazhagam-tvk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election",
+      "will-the-dravida-munnetra-kazhagam-dmk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election",
+      "lol-dkc-dnsc-2026-05-04",
+      "highest-temperature-in-taipei-on-may-4-2026-24c",
+      "lol-dkc-dnsc-2026-05-04-game2"
     ]
   }
 ]
