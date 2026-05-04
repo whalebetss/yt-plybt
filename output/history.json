@@ -333,7 +333,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-04T08-09-50",
+    "address": "movers:2026-05-04t08-09-50",
     "label": "polymarket_movers",
     "featured_at": "2026-05-04T08:11:09.484250+00:00",
     "run_id": "2026-05-04T08-09-50",
@@ -345,6 +345,21 @@
       "lol-dkc-dnsc-2026-05-04",
       "highest-temperature-in-taipei-on-may-4-2026-24c",
       "lol-dkc-dnsc-2026-05-04-game2"
+    ]
+  },
+  {
+    "address": "movers:2026-05-04T20-06-59",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-04T20:08:21.828871+00:00",
+    "run_id": "2026-05-04T20-06-59",
+    "video_id": "d0ejMvjwD64",
+    "positions_hash": "highest-temperature-in-london-on-may-4-2026-15c,highest-temperature-in-taipei-on-may-4-2026-24c,lol-shft-mkoi-2026-05-04-game1,will-tamilaga-vettri-kazhagam-tvk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election,will-the-dravida-munnetra-kazhagam-dmk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election",
+    "position_slugs": [
+      "highest-temperature-in-london-on-may-4-2026-15c",
+      "will-tamilaga-vettri-kazhagam-tvk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election",
+      "will-the-dravida-munnetra-kazhagam-dmk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election",
+      "highest-temperature-in-taipei-on-may-4-2026-24c",
+      "lol-shft-mkoi-2026-05-04-game1"
     ]
   }
 ]
