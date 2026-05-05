@@ -348,7 +348,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-04T20-06-59",
+    "address": "movers:2026-05-04t20-06-59",
     "label": "polymarket_movers",
     "featured_at": "2026-05-04T20:08:21.828871+00:00",
     "run_id": "2026-05-04T20-06-59",
@@ -360,6 +360,21 @@
       "will-the-dravida-munnetra-kazhagam-dmk-win-the-most-seats-in-the-2026-tamil-nadu-legislative-assembly-election",
       "highest-temperature-in-taipei-on-may-4-2026-24c",
       "lol-shft-mkoi-2026-05-04-game1"
+    ]
+  },
+  {
+    "address": "movers:2026-05-05T20-01-13",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-05T20:02:32.938645+00:00",
+    "run_id": "2026-05-05T20-01-13",
+    "video_id": "ciZtkPBcETs",
+    "positions_hash": "atp-tobon-ribeiro-2026-05-05,dota2-mouz-1win-2026-05-05,dota2-mouz-1win-2026-05-05-game1,dota2-mouz-1win-2026-05-05-game2,lol-big1-use1-2026-05-05-game1",
+    "position_slugs": [
+      "lol-big1-use1-2026-05-05-game1",
+      "atp-tobon-ribeiro-2026-05-05",
+      "dota2-mouz-1win-2026-05-05",
+      "dota2-mouz-1win-2026-05-05-game2",
+      "dota2-mouz-1win-2026-05-05-game1"
     ]
   }
 ]
