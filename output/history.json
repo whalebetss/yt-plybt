@@ -363,7 +363,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-05T20-01-13",
+    "address": "movers:2026-05-05t20-01-13",
     "label": "polymarket_movers",
     "featured_at": "2026-05-05T20:02:32.938645+00:00",
     "run_id": "2026-05-05T20-01-13",
@@ -375,6 +375,21 @@
       "dota2-mouz-1win-2026-05-05",
       "dota2-mouz-1win-2026-05-05-game2",
       "dota2-mouz-1win-2026-05-05-game1"
+    ]
+  },
+  {
+    "address": "movers:2026-05-06T20-14-49",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-06T20:16:03.709147+00:00",
+    "run_id": "2026-05-06T20-14-49",
+    "video_id": "dPUKnYDKYZ8",
+    "positions_hash": "dota2-modus-nem-2026-05-06,elon-musk-of-tweets-may-4-may-6-40-64,wta-boulter-lys-2026-05-05,wta-mcnally-kasatki-2026-05-05,wti-up-or-down-on-may-6-2026",
+    "position_slugs": [
+      "elon-musk-of-tweets-may-4-may-6-40-64",
+      "wta-boulter-lys-2026-05-05",
+      "wta-mcnally-kasatki-2026-05-05",
+      "wti-up-or-down-on-may-6-2026",
+      "dota2-modus-nem-2026-05-06"
     ]
   }
 ]
