@@ -378,7 +378,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-06T20-14-49",
+    "address": "movers:2026-05-06t20-14-49",
     "label": "polymarket_movers",
     "featured_at": "2026-05-06T20:16:03.709147+00:00",
     "run_id": "2026-05-06T20-14-49",
@@ -390,6 +390,21 @@
       "wta-mcnally-kasatki-2026-05-05",
       "wti-up-or-down-on-may-6-2026",
       "dota2-modus-nem-2026-05-06"
+    ]
+  },
+  {
+    "address": "movers:2026-05-07T08-07-27",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-07T08:08:40.747002+00:00",
+    "run_id": "2026-05-07T08-07-27",
+    "video_id": "cY9KOnvykzU",
+    "positions_hash": "atp-walton-mccabe-2026-05-06,cs2-m1x-drip-2026-05-06-map-handicap-home-1pt5,mlb-cin-chc-2026-05-06,will-psg-win-the-202526-champions-league,wta-starodu-waltert-2026-05-06",
+    "position_slugs": [
+      "wta-starodu-waltert-2026-05-06",
+      "cs2-m1x-drip-2026-05-06-map-handicap-home-1pt5",
+      "mlb-cin-chc-2026-05-06",
+      "will-psg-win-the-202526-champions-league",
+      "atp-walton-mccabe-2026-05-06"
     ]
   }
 ]
