@@ -393,7 +393,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-07T08-07-27",
+    "address": "movers:2026-05-07t08-07-27",
     "label": "polymarket_movers",
     "featured_at": "2026-05-07T08:08:40.747002+00:00",
     "run_id": "2026-05-07T08-07-27",
@@ -405,6 +405,21 @@
       "mlb-cin-chc-2026-05-06",
       "will-psg-win-the-202526-champions-league",
       "atp-walton-mccabe-2026-05-06"
+    ]
+  },
+  {
+    "address": "movers:2026-05-07T20-07-04",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-07T20:08:10.696531+00:00",
+    "run_id": "2026-05-07T20-07-04",
+    "video_id": "GBVKZK_tdH0",
+    "positions_hash": "cricipl-luc-roy-2026-05-07,mlb-min-wsh-2026-05-07-total-9pt5,spx-up-or-down-on-may-7-2026,wta-bouzkov-townsen-2026-05-07,wta-sierra-kalinin-2026-05-07",
+    "position_slugs": [
+      "wta-sierra-kalinin-2026-05-07",
+      "cricipl-luc-roy-2026-05-07",
+      "spx-up-or-down-on-may-7-2026",
+      "wta-bouzkov-townsen-2026-05-07",
+      "mlb-min-wsh-2026-05-07-total-9pt5"
     ]
   }
 ]
