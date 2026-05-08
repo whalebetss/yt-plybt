@@ -408,7 +408,7 @@
     ]
   },
   {
-    "address": "movers:2026-05-07T20-07-04",
+    "address": "movers:2026-05-07t20-07-04",
     "label": "polymarket_movers",
     "featured_at": "2026-05-07T20:08:10.696531+00:00",
     "run_id": "2026-05-07T20-07-04",
@@ -420,6 +420,21 @@
       "spx-up-or-down-on-may-7-2026",
       "wta-bouzkov-townsen-2026-05-07",
       "mlb-min-wsh-2026-05-07-total-9pt5"
+    ]
+  },
+  {
+    "address": "movers:2026-05-08T06-13-12",
+    "label": "polymarket_movers",
+    "featured_at": "2026-05-08T06:14:19.345940+00:00",
+    "run_id": "2026-05-08T06-13-12",
+    "video_id": "Z80nCYBJHxE",
+    "positions_hash": "bitcoin-above-80k-on-may-8,bitcoin-above-82k-on-may-8,lol-nrg-ccg-2026-05-07,wta-tararud-yao-2026-05-07,wta-watson-you-2026-05-07",
+    "position_slugs": [
+      "wta-tararud-yao-2026-05-07",
+      "wta-watson-you-2026-05-07",
+      "bitcoin-above-80k-on-may-8",
+      "lol-nrg-ccg-2026-05-07",
+      "bitcoin-above-82k-on-may-8"
     ]
   }
 ]
